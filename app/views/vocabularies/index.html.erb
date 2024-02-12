@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Vocabularies</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Word</th>
+      <th scope="col">Explanation</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @vocabularies.blank? %>
+      <tr>
+        <td colspan="2">
+          No vocabulary yet, please <%= link_to 'click here', new_vocabulary_path %> to add new vocabulary.
+        </td>
+      </tr>
+    <% else %>
+      <% @vocabularies.each do |vocabulary| %>
+        <tr>
+          <td><%= vocabulary.word %></td>
+          <td><%= vocabulary.translation %></td>
+          <td><%= link_to "Show this vocabulary", vocabulary %></td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "New vocabulary", new_vocabulary_path %>
+
